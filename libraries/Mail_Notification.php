@@ -824,7 +824,7 @@ class Mail_Notification extends Engine
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        // FIXME
+        // TODO
     }
 
     /**
