@@ -107,7 +107,7 @@ class Mail_Notification extends ClearOS_Controller
         // Handle form submit
         //-------------------
 
-        if (($this->input->post('submit') && $form_ok)) {
+        if (($this->input->post('submit') || $this->input->post('update_and_test')) && $form_ok) {
             try {
                 $this->mail_notification->set_host($this->input->post('host'));
                 $this->mail_notification->set_port($this->input->post('port'));
@@ -117,7 +117,11 @@ class Mail_Notification extends ClearOS_Controller
                 $this->mail_notification->set_sender($this->input->post('sender'));
 
                 $this->page->set_status_updated();
-                redirect('/mail_notification');
+
+                if ($this->input->post('update_and_test'))
+                    redirect('/mail_notification/test');
+                else
+                    redirect('/mail_notification');
             } catch (Exception $e) {
                 $this->page->view_exception($e);
                 return;
@@ -170,17 +174,24 @@ class Mail_Notification extends ClearOS_Controller
             try {
                 $this->mail_notification->test_relay($this->input->post('email'));
                 $this->page->set_message(lang('mail_notification_test_success'), 'info');
+                $this->session->unset_userdata('test_email');
                 redirect('/mail_notification');
             } catch (Exception $e) {
+                $this->session->set_userdata('test_email', $this->input->post('email'));
                 $this->page->set_message(clearos_exception_message($e));
-                redirect('/mail_notification');
+                redirect('/mail_notification/edit');
             }
         }
 
         // Load view data
         //---------------
 
-        $data['email'] = ($this->input->post('email')) ? '' : $this->input->post('email');
+        if ($this->input->post('email'))
+            $data['email'] = $this->input->post('email');
+        else if ($this->session->userdata('test_email'))
+            $data['email'] = $this->session->userdata('test_email');
+        else
+            $data['email'] = '';
 
         // Load views
         //-----------

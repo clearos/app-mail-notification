@@ -37,20 +37,14 @@ $this->lang->load('base');
 $this->lang->load('mail_notification');
 
 ///////////////////////////////////////////////////////////////////////////////
-// Form open
-///////////////////////////////////////////////////////////////////////////////
-
-echo form_open('mail_notification/edit');
-echo form_header(lang('mail_notification_settings'));
-
-///////////////////////////////////////////////////////////////////////////////
-// Form fields and buttons
+// Form handler
 ///////////////////////////////////////////////////////////////////////////////
 
 if ($mode === 'edit') {
     $read_only = FALSE;
     $buttons = array(
         form_submit_update('submit'),
+        form_submit_custom('update_and_test', lang('mail_notification_update_and_test')),
         anchor_cancel('/app/mail_notification')
     );
 } else {
@@ -61,17 +55,21 @@ if ($mode === 'edit') {
     );
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// Form
+///////////////////////////////////////////////////////////////////////////////
+
+echo form_open('mail_notification/edit');
+echo form_header(lang('mail_notification_settings'));
+
 echo field_input('host', $host, lang('mail_notification_host'), $read_only);
 echo field_input('port', $port, lang('mail_notification_port'), $read_only);
 echo field_dropdown('encryption', $encryption_options, $encryption, lang('mail_notification_encryption'), $read_only);
 echo field_input('username', $username, lang('mail_notification_username'), $read_only);
-echo field_input('password', $password, lang('mail_notification_password'), $read_only);
+if (! $read_only)
+    echo field_password('password', $password, lang('mail_notification_password'), $read_only);
 echo field_input('sender', $sender, lang('mail_notification_sender'), $read_only);
 echo field_button_set($buttons);
-
-///////////////////////////////////////////////////////////////////////////////
-// Form close
-///////////////////////////////////////////////////////////////////////////////
 
 echo form_footer();
 echo form_close();

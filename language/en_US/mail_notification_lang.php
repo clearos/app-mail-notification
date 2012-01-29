@@ -28,3 +28,4 @@ $lang['mail_notification_recipient_invalid'] = 'Recipient is invalid.';
 $lang['mail_notification_send_failed'] = 'Send failed.';
 $lang['mail_notification_send_now'] = 'Send Now';
 $lang['mail_notification_send_email_to'] = 'Send To';
+$lang['mail_notification_update_and_test'] = 'Update and Test';
