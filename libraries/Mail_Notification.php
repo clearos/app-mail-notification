@@ -115,6 +115,7 @@ class Mail_Notification extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     const FILE_CONFIG = '/etc/clearos/mail_notification.conf';
+    const MAX_PASSWORD_LENGTH = 100;
 
     ///////////////////////////////////////////////////////////////////////////////
     // M E T H O D S
@@ -795,7 +796,7 @@ class Mail_Notification extends Engine
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        if (!preg_match("/^[A-Z0-9._%+-@$\\?\\(\\)]*$/i", $password))
+        if (strlen($password) > self::MAX_PASSWORD_LENGTH)
             return lang('mail_notification_password_invalid');
     }
 
