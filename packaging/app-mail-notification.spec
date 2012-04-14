@@ -1,7 +1,7 @@
 
 Name: app-mail-notification
 Epoch: 1
-Version: 1.0.10
+Version: 1.1.0
 Release: 1%{dist}
 Summary: Mail Notification
 License: GPLv3
@@ -15,7 +15,7 @@ Requires: app-base
 Many apps and services in the Marketplace use email to notify administrators of events that may require their attention.  The mail notification app provides an MTA to relay messages sent from the server - useful if you are not running a full SMTP (mail) service on the server.
 
 %package core
-Summary: Mail Notification - APIs and install
+Summary: Mail Notification - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
