@@ -12,7 +12,7 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Many apps and services in the Marketplace use email to notify administrators of events that may require their attention.  The mail notification app provides an MTA to relay messages sent from the server - useful if you are not running a full SMTP (mail) service on the server.
+Many apps and services use e-mail to notify administrators of events that may require their attention.  The Mail Notification app ensures that mail can be delivered from your system.
 
 %package core
 Summary: Mail Notification - Core
@@ -24,7 +24,7 @@ Requires: postfix
 Requires: Swift
 
 %description core
-Many apps and services in the Marketplace use email to notify administrators of events that may require their attention.  The mail notification app provides an MTA to relay messages sent from the server - useful if you are not running a full SMTP (mail) service on the server.
+Many apps and services use e-mail to notify administrators of events that may require their attention.  The Mail Notification app ensures that mail can be delivered from your system.
 
 This package provides the core API and libraries.
 
