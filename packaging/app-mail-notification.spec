@@ -1,7 +1,7 @@
 
 Name: app-mail-notification
 Epoch: 1
-Version: 1.1.0
+Version: 1.1.1
 Release: 1%{dist}
 Summary: Mail Notification
 License: GPLv3
@@ -19,7 +19,7 @@ Summary: Mail Notification - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
-Requires: app-network-core
+Requires: app-network-core >= 1:1.2.10
 Requires: postfix
 Requires: Swift
 

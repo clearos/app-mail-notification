@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'mail_notification';
-$app['version'] = '1.1.0';
+$app['version'] = '1.1.1';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -27,7 +27,7 @@ $app['subcategory'] = lang('base_subcategory_settings');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'app-network-core',
+    'app-network-core >= 1:1.2.10',
     'postfix',
     'Swift',
 );
