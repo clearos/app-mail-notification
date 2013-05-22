@@ -3,9 +3,9 @@
 /**
  * Mail notification class.
  *
- * @category   Apps
- * @package    Mail_Notification
- * @subpackage Libraries
+ * @category   apps
+ * @package    mail-notification
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2003-2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
@@ -91,9 +91,9 @@ include_once 'Swift/lib/Swift/Connection/SMTP.php';
 /**
  * Mail notification class.
  *
- * @category   Apps
- * @package    Mail_Notification
- * @subpackage Libraries
+ * @category   apps
+ * @package    mail-notification
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2003-2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
