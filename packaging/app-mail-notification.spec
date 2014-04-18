@@ -1,7 +1,7 @@
 
 Name: app-mail-notification
 Epoch: 1
-Version: 1.1.1
+Version: 1.1.2
 Release: 1%{dist}
 Summary: Mail Notification
 License: GPLv3
@@ -74,7 +74,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/mail_notification/packaging
-%exclude /usr/clearos/apps/mail_notification/tests
 %dir /usr/clearos/apps/mail_notification
 /usr/clearos/apps/mail_notification/deploy
 /usr/clearos/apps/mail_notification/language

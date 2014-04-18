@@ -388,6 +388,7 @@ class Mail_Notification extends Engine
                 }
                 if (isset($msgpart['Content-ID']))
                     $part->headers->set("Content-ID", $msgpart['Content-ID']);
+
                 $message->attach($part);
             }
         }
@@ -550,9 +551,12 @@ class Mail_Notification extends Engine
 
         Validation_Exception::is_valid($this->validate_html_body($html));
 
-        $html = array($html, "text/html");
+	$part = array(
+		'data' => $html, 'type' => 'text/html',
+		'encoding' => NULL, 'charset' => 'us-ascii'
+	);
 
-        $this->message['parts'][] = $html;
+        $this->message['parts'][] = $part;
     }
 
     /**
