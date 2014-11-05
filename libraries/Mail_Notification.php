@@ -47,6 +47,8 @@ require_once $bootstrap . '/bootstrap.php';
 ///////////////////////////////////////////////////////////////////////////////
 
 clearos_load_language('mail_notification');
+clearos_load_language('mail');
+clearos_load_language('network');
 
 ///////////////////////////////////////////////////////////////////////////////
 // D E P E N D E N C I E S
@@ -703,7 +705,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email))
-            return lang('mail_notification_email_invalid');
+            return lang('base_email_address_invalid');
     }
 
     /**
@@ -735,7 +737,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (! Network_Utils::is_valid_port($port))
-            return lang('mail_notification_port_invalid');
+            return lang('network_port_invalid');
     }
 
     /**
@@ -753,7 +755,7 @@ class Mail_Notification extends Engine
         $hostname = new Hostname();
 
         if ($hostname->validate_hostname($host))
-            return lang('mail_notification_host_invalid');
+            return lang('network_hostname_invalid');
     }
 
     /**
@@ -785,7 +787,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (!preg_match("/^[A-Z0-9._%+-@]*$/i", $username))
-            return lang('mail_notification_username_invalid');
+            return lang('mail_smtp_username_invalid');
     }
 
     /**
@@ -801,7 +803,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (strlen($password) > self::MAX_PASSWORD_LENGTH)
-            return lang('mail_notification_password_invalid');
+            return lang('mail_smtp_password_invalid');
     }
 
     /**
