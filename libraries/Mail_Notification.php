@@ -46,8 +46,8 @@ require_once $bootstrap . '/bootstrap.php';
 // T R A N S L A T I O N S
 ///////////////////////////////////////////////////////////////////////////////
 
-clearos_load_language('mail_notification');
 clearos_load_language('mail');
+clearos_load_language('mail_notification');
 clearos_load_language('network');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -193,9 +193,9 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         $options = array(
-            \Swift_Connection_SMTP::ENC_OFF => lang('mail_notification_none'),
-            \Swift_Connection_SMTP::ENC_SSL => lang('mail_notification_ssl'),
-            \Swift_Connection_SMTP::ENC_TLS => lang('mail_notification_tls')
+            \Swift_Connection_SMTP::ENC_OFF => lang('mail_none'),
+            \Swift_Connection_SMTP::ENC_SSL => lang('mail_ssl'),
+            \Swift_Connection_SMTP::ENC_TLS => lang('mail_tls')
         );
 
         return $options;
@@ -308,11 +308,11 @@ class Mail_Notification extends Engine
         // ----------
         
         if ($this->message['recipient'] == NULL || empty($this->message['recipient'])) {
-            throw new Validation_Exception(lang('mail_notification_recipient_not_set'));
+            throw new Validation_Exception(lang('mail_recipient_not_set'));
         } else {
             foreach ($this->message['recipient'] as $address) {
                 if ($this->validate_email($address['address']))
-                    throw new Validation_Exception(lang('mail_notification_recipient_invalid'));
+                    throw new Validation_Exception(lang('mail_recipient_invalid'));
             }
         }
 
@@ -454,7 +454,7 @@ class Mail_Notification extends Engine
         } else {
             $swift->disconnect();
             $this->clear();
-            throw new Engine_Exception(lang('mail_notification_send_failed'), CLEAROS_WARNING);
+            throw new Engine_Exception(lang('mail_send_failed'), CLEAROS_WARNING);
         }
     }
 
@@ -684,7 +684,7 @@ class Mail_Notification extends Engine
 
         $this->add_recipient($email);
         $this->set_message_subject(lang('mail_notification_test'));
-        $this->set_message_body(lang('mail_notification_test_success'));
+        $this->set_message_body(lang('mail_test_success_message'));
         $this->send();
     }
 
@@ -721,7 +721,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (preg_match("/.*\n.*/", $subject))
-            return lang('mail_notification_subject_invalid');
+            return lang('mail_subject_invalid');
     }
 
     /**
@@ -771,7 +771,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (is_bool($encryption))
-            return lang('mail_notification_encryption_invalid');
+            return lang('mail_encryption_invalid');
     }
 
     /**
@@ -847,7 +847,7 @@ class Mail_Notification extends Engine
         clearos_profile(__METHOD__, __LINE__);
 
         if (!is_array($attachment))
-            return lang('mail_notification_attachment_invalid');
+            return lang('mail_attachment_invalid');
 
         // If data parameter is set, its OK
         if (isset($attachment['data']))
@@ -856,7 +856,7 @@ class Mail_Notification extends Engine
         $file = new File($attachment['filename'], TRUE);
 
         if (!$file->exists())
-            return lang('mail_notification_attachment_file_not_found') . ' - ' . $attachment['filename'];
+            return lang('mail_attachment_file_not_found') . ' - ' . $attachment['filename'];
     }
 
     ///////////////////////////////////////////////////////////////////////////////
