@@ -1,23 +1,19 @@
 
 Name: app-mail-notification
 Epoch: 1
-Version: 2.0.5
+Version: 2.0.10
 Release: 1%{dist}
-Summary: Mail Notification
-License: GPLv3
-Group: ClearOS/Apps
-Source: %{name}-%{version}.tar.gz
+Summary: Mail Notification - Core
+License: LGPLv3
+Group: ClearOS/Libraries
+Source: app-mail-notification-%{version}.tar.gz
 Buildarch: noarch
-Requires: %{name}-core = 1:%{version}-%{release}
-Requires: app-base
 
 %description
 Many apps and services use e-mail to notify administrators of events that may require their attention.  The Mail Notification app ensures that mail can be delivered from your system.
 
 %package core
 Summary: Mail Notification - Core
-License: LGPLv3
-Group: ClearOS/Libraries
 Requires: app-base-core
 Requires: app-network-core >= 1:1.2.10
 Requires: postfix
@@ -38,9 +34,6 @@ cp -r * %{buildroot}/usr/clearos/apps/mail_notification/
 
 install -D -m 0600 packaging/mail_notification.conf %{buildroot}/etc/clearos/mail_notification.conf
 
-%post
-logger -p local6.notice -t installer 'app-mail-notification - installing'
-
 %post core
 logger -p local6.notice -t installer 'app-mail-notification-core - installing'
 
@@ -52,11 +45,6 @@ fi
 
 exit 0
 
-%preun
-if [ $1 -eq 0 ]; then
-    logger -p local6.notice -t installer 'app-mail-notification - uninstalling'
-fi
-
 %preun core
 if [ $1 -eq 0 ]; then
     logger -p local6.notice -t installer 'app-mail-notification-core - uninstalling'
@@ -64,12 +52,6 @@ if [ $1 -eq 0 ]; then
 fi
 
 exit 0
-
-%files
-%defattr(-,root,root)
-/usr/clearos/apps/mail_notification/controllers
-/usr/clearos/apps/mail_notification/htdocs
-/usr/clearos/apps/mail_notification/views
 
 %files core
 %defattr(-,root,root)
