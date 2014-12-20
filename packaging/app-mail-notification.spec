@@ -16,7 +16,7 @@ Many apps and services use e-mail to notify administrators of events that may re
 Summary: Mail Notification - Core
 Requires: app-base-core
 Requires: app-network-core >= 1:1.2.10
-Requires: postfix
+Requires: app-mail
 Requires: Swift
 
 %description core

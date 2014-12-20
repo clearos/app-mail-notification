@@ -4,6 +4,3 @@ if [ -e /etc/mailer.conf ]; then
     logger -p local6.notice -t installer "app-mail-notification-core - moving configuration file to new location"
     mv /etc/mailer.conf /etc/clearos/mail_notification.conf
 fi
-
-# FIXME: remove after app-smtp-core becomes a default app (ClearOS 6.4?)
-/sbin/service postfix condrestart >/dev/null 2>&1

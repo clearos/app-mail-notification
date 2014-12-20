@@ -31,7 +31,7 @@ $app['core_only'] = TRUE;
 
 $app['core_requires'] = array(
     'app-network-core >= 1:1.2.10',
-    'postfix',
+    'app-mail',
     'Swift',
 );
 
