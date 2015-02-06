@@ -1,7 +1,7 @@
 
 Name: app-mail-notification
 Epoch: 1
-Version: 2.0.11
+Version: 2.0.18
 Release: 1%{dist}
 Summary: Mail Notification - Core
 License: LGPLv3
