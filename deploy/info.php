@@ -6,7 +6,6 @@
 
 $app['basename'] = 'mail_notification';
 $app['version'] = '2.3.22';
-$app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
 $app['license'] = 'GPLv3';
@@ -31,7 +30,7 @@ $app['core_only'] = TRUE;
 
 $app['core_requires'] = array(
     'app-network-core >= 1:1.2.10',
-    'app-mail',
+    'app-mail-core',
     'Swift',
 );
 

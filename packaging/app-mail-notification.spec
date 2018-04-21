@@ -3,9 +3,11 @@ Name: app-mail-notification
 Epoch: 1
 Version: 2.3.22
 Release: 1%{dist}
-Summary: Mail Notification - Core
+Summary: Mail Notification - API
 License: LGPLv3
-Group: ClearOS/Libraries
+Group: Applications/API
+Packager: ClearFoundation
+Vendor: ClearFoundation
 Source: app-mail-notification-%{version}.tar.gz
 Buildarch: noarch
 
@@ -13,10 +15,10 @@ Buildarch: noarch
 Many apps and services use e-mail to notify administrators of events that may require their attention.  The Mail Notification app ensures that mail can be delivered from your system.
 
 %package core
-Summary: Mail Notification - Core
+Summary: Mail Notification - API
 Requires: app-base-core
 Requires: app-network-core >= 1:1.2.10
-Requires: app-mail
+Requires: app-mail-core
 Requires: Swift
 
 %description core
